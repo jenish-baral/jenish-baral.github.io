@@ -1,0 +1,20 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { getCollection } from "astro:content";
+import InfoLayout from "../../layouts/InfoLayout.astro";
+import BlogCat from "../../components/blogCat";
+
+const articles: CollectionEntry<"blog">[] = (await getCollection("blog")).sort(
+  (a: CollectionEntry<"blog">, b: CollectionEntry<"blog">) =>
+    b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+)
+const categories = Array.from(
+  new Set(articles.map((article) => article.data.category))
+).sort();
+
+---
+
+<InfoLayout title="Blog | Sumit Poudel" cononical="https://www.sumit-poudel.com.np/blog" >
+    <BlogCat categories ={categories} articles={articles} client:load />
+</InfoLayout>
+
