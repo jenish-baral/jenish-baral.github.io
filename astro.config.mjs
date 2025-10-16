@@ -7,7 +7,7 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://www.sumit-poudel.com.np',
+  site: 'https://www.jenishbaral.dpdns.org',
   trailingSlash: "never",
    output: 'static',
   vite: {
